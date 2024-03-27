@@ -28,3 +28,35 @@ updates:
       - "security"
     commit-message:
       prefix: "fix(deps):"
+    ignore:
+      - dependency-name: "maven"
+        versions: ["3.5.*"]
+      - dependency-name: "org.springframework.security:spring-security-web"
+        versions: ["4.2.13.RELEASE"]
+      - dependency-name: "org.springframework.security:spring-security-config"
+        versions: ["4.2.13.RELEASE"]
+    allow:
+      - dependency-name: "*"
+        dependency-type: "all"
+        schedules:
+          - interval: "daily"
+            creates: "issues"
+          - interval: "daily"
+            creates: "pull-request"
+            open-pull-requests-limit: 5
+    commit-message:
+      prefix: "chore(deps):"
+    reviewers:
+      - reviewers:
+          - "alana.correya@ust.com"
+      - teams:
+          - "alana.correya@ust.com"
+    assignees:
+      - "keerthi.nallattesoman@ust.com"
+    labels:
+      - "dependencies"
+      - "security"
+notifications:
+  email:
+    - "alana.correya@ust.com"
+
